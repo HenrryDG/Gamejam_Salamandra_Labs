@@ -38,6 +38,21 @@ public class PlayerController : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         animator = GetComponent<Animator>();
 
+        if (rb == null)
+        {
+            Debug.LogError("PlayerController: Rigidbody not found on the GameObject. Movement will not work.", this);
+        }
+
+        if (actionsMaps == null)
+        {
+            Debug.LogWarning("PlayerController: PlayerInput component not found. Input actions will be ignored.", this);
+        }
+
+        if (animator == null)
+        {
+            Debug.LogWarning("PlayerController: Animator component not found. Animation triggers will be skipped.", this);
+        }
+
     }
 
     // Update is called once per frame
@@ -53,8 +68,19 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            animator.SetTrigger("jump");
+            if (rb != null)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerController.Jump: Rigidbody is null — cannot apply jump force.", this);
+            }
+
+            if (animator != null)
+            {
+                animator.SetTrigger("jump");
+            }
         }
     }
 
@@ -62,26 +88,63 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayerInput()
     {
-        Vector2 inputs = actionsMaps.actions["Move"].ReadValue<Vector2>();
+        if (actionsMaps == null)
+        {
+            // PlayerInput missing; nothing to read
+            return;
+        }
+
+        var moveAction = actionsMaps.actions?.FindAction("Move");
+        if (moveAction == null)
+        {
+            // Action not found or actions asset null
+            // Only log once to avoid spamming the console
+            // (developer can enable verbose logging if needed)
+            return;
+        }
+
+        Vector2 inputs = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(inputs.x, 0, inputs.y);
 
-        Vector3 targetPos = rb.position + transform.TransformDirection(move) * moveSpeed * Time.deltaTime;
-        rb.MovePosition(targetPos);
+        if (rb != null)
+        {
+            Vector3 targetPos = rb.position + transform.TransformDirection(move) * moveSpeed * Time.deltaTime;
+            rb.MovePosition(targetPos);
+        }
 
-        animator.SetTrigger("run");
+        if (animator != null)
+        {
+            animator.SetTrigger("run");
+        }
     }
 
     // Método para rotar la cámara
 
     void MoveCamera()
     {
-        Vector2 inputs = actionsMaps.actions["MoveCamera"].ReadValue<Vector2>();
+        if (actionsMaps == null)
+            return;
+
+        var lookAction = actionsMaps.actions?.FindAction("MoveCamera");
+        if (lookAction == null)
+            return;
+
+        Vector2 inputs = lookAction.ReadValue<Vector2>();
         hMouse = mouse_horizontal * inputs.x;
 
         vMouse += mouse_vertical * inputs.y;
         vMouse = Mathf.Clamp(vMouse, maxRotationLookUp, maxRotationLookDown);
 
-        Camera.main.transform.localEulerAngles = new Vector3(-vMouse, 0, 0.0f);
+        if (Camera.main != null)
+        {
+            Camera.main.transform.localEulerAngles = new Vector3(-vMouse, 0, 0.0f);
+        }
+        else
+        {
+            // Camera.main can be null in some contexts (disabled or not tagged)
+            // Avoid throwing an exception; developer should ensure there's a MainCamera with the MainCamera tag
+        }
+
         transform.Rotate(0, hMouse, 0);
     }
 }
