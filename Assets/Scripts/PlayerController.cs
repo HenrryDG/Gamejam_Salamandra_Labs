@@ -90,16 +90,12 @@ public class PlayerController : MonoBehaviour
     {
         if (actionsMaps == null)
         {
-            // PlayerInput missing; nothing to read
             return;
         }
 
         var moveAction = actionsMaps.actions?.FindAction("Move");
         if (moveAction == null)
         {
-            // Action not found or actions asset null
-            // Only log once to avoid spamming the console
-            // (developer can enable verbose logging if needed)
             return;
         }
 
@@ -122,29 +118,13 @@ public class PlayerController : MonoBehaviour
 
     void MoveCamera()
     {
-        if (actionsMaps == null)
-            return;
-
-        var lookAction = actionsMaps.actions?.FindAction("MoveCamera");
-        if (lookAction == null)
-            return;
-
-        Vector2 inputs = lookAction.ReadValue<Vector2>();
+        Vector2 inputs = actionsMaps.actions["MoveCamera"].ReadValue<Vector2>();
         hMouse = mouse_horizontal * inputs.x;
 
         vMouse += mouse_vertical * inputs.y;
         vMouse = Mathf.Clamp(vMouse, maxRotationLookUp, maxRotationLookDown);
 
-        if (Camera.main != null)
-        {
-            Camera.main.transform.localEulerAngles = new Vector3(-vMouse, 0, 0.0f);
-        }
-        else
-        {
-            // Camera.main can be null in some contexts (disabled or not tagged)
-            // Avoid throwing an exception; developer should ensure there's a MainCamera with the MainCamera tag
-        }
-
+        Camera.main.transform.localEulerAngles = new Vector3(-vMouse, 0, 0.0f);
         transform.Rotate(0, hMouse, 0);
     }
 }
