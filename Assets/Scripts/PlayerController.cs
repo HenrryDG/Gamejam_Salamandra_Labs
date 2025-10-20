@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     float hMouse, vMouse;
 
+    //Animator controller
+    Animator animator;
+
 
     [Header("Sensibilidad")]
     [SerializeField] float mouse_horizontal = 0.2f;
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         actionsMaps = GetComponent<PlayerInput>();
         //Cursor.lockState = CursorLockMode.Locked;
+        animator = GetComponent<Animator>();
 
     }
 
@@ -50,6 +54,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("jump");
         }
     }
 
@@ -63,7 +68,7 @@ public class PlayerController : MonoBehaviour
         Vector3 targetPos = rb.position + transform.TransformDirection(move) * moveSpeed * Time.deltaTime;
         rb.MovePosition(targetPos);
 
-        
+        animator.SetTrigger("run");
     }
 
     // Método para rotar la cámara
