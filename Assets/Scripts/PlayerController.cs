@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     float hMouse, vMouse;
 
+    //Animator controller
+    Animator animator;
+
 
     [Header("Sensibilidad")]
     [SerializeField] float mouse_horizontal = 0.2f;
@@ -33,6 +36,22 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         actionsMaps = GetComponent<PlayerInput>();
         //Cursor.lockState = CursorLockMode.Locked;
+        animator = GetComponent<Animator>();
+
+        if (rb == null)
+        {
+            Debug.LogError("PlayerController: Rigidbody not found on the GameObject. Movement will not work.", this);
+        }
+
+        if (actionsMaps == null)
+        {
+            Debug.LogWarning("PlayerController: PlayerInput component not found. Input actions will be ignored.", this);
+        }
+
+        if (animator == null)
+        {
+            Debug.LogWarning("PlayerController: Animator component not found. Animation triggers will be skipped.", this);
+        }
 
     }
 
@@ -49,7 +68,19 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (rb != null)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerController.Jump: Rigidbody is null — cannot apply jump force.", this);
+            }
+
+            if (animator != null)
+            {
+                animator.SetTrigger("jump");
+            }
         }
     }
 
@@ -57,13 +88,30 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayerInput()
     {
-        Vector2 inputs = actionsMaps.actions["Move"].ReadValue<Vector2>();
+        if (actionsMaps == null)
+        {
+            return;
+        }
+
+        var moveAction = actionsMaps.actions?.FindAction("Move");
+        if (moveAction == null)
+        {
+            return;
+        }
+
+        Vector2 inputs = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(inputs.x, 0, inputs.y);
 
-        Vector3 targetPos = rb.position + transform.TransformDirection(move) * moveSpeed * Time.deltaTime;
-        rb.MovePosition(targetPos);
+        if (rb != null)
+        {
+            Vector3 targetPos = rb.position + transform.TransformDirection(move) * moveSpeed * Time.deltaTime;
+            rb.MovePosition(targetPos);
+        }
 
-        
+        if (animator != null)
+        {
+            animator.SetTrigger("run");
+        }
     }
 
     // Método para rotar la cámara
