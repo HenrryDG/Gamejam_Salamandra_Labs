@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Rumi y Qori.sln"
+    "dotnet.defaultSolution": "Rumi y Qori.sln",
+    "dotnet.preferCSharpExtension": true
 }
