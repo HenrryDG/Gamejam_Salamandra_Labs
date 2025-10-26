@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
             if (animator != null)
             {
-                animator.SetTrigger("jump");
+                animator.SetTrigger("Jump");
             }
         }
     }
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
         if (animator != null)
         {
-            animator.SetTrigger("run");
+            animator.SetFloat("Speed", inputs.magnitude);
         }
     }
 
