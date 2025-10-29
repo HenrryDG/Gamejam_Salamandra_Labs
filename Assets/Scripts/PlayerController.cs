@@ -9,12 +9,18 @@ public class PlayerController : MonoBehaviour
 
     // PONER HEADERS
     [Header("Movimiento")]
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 0f;
+    [SerializeField] private float moveSpeed = 2.5f;
+    [SerializeField] private float runSpeed = 7f; 
+
+    [Header("Velocidad de Animación")]
+    [SerializeField] private float walkAnimationSpeed = 0.8f;
+    [SerializeField] private float runAnimationSpeed = 1.1f;
 
     Rigidbody rb;
     PlayerInput actionsMaps;
 
+    private bool isRunning = false; 
     float hMouse, vMouse;
 
     //Animator controller
@@ -52,7 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("PlayerController: Animator component not found. Animation triggers will be skipped.", this);
         }
-
+        
     }
 
     // Update is called once per frame
@@ -84,6 +90,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Método para correr
+    public void Run(InputAction.CallbackContext context)
+    {
+        // Verifica si la acción acaba de empezar 
+        if (context.started)
+        {
+            isRunning = true;
+        }
+        // Verifica si la acción acaba de terminar
+        else if (context.canceled)
+        {
+            isRunning = false;
+        }
+    }
+
     // Método para moverse
 
     void MovePlayerInput()
@@ -102,9 +123,32 @@ public class PlayerController : MonoBehaviour
         Vector2 inputs = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(inputs.x, 0, inputs.y);
 
+        float currentSpeed = moveSpeed;
+
+        // El sprint solo aplica si se hay movimiento y se tiene Shift presionado
+        if (inputs.y > 0.01f && isRunning)
+        {
+            currentSpeed = runSpeed;
+            if (animator != null)
+            {
+                // Asigna la velocidad de animación de correr
+                animator.speed = runAnimationSpeed;
+            }
+        }
+        else
+        {
+            // --- INICIO DE CAMBIOS ---
+            // Si no está corriendo (o no se está moviendo hacia adelante), vuelve a la velocidad normal
+            if (animator != null)
+            {
+                animator.speed = walkAnimationSpeed;
+            }
+            // --- FIN DE CAMBIOS ---
+        }
+
         if (rb != null)
         {
-            Vector3 targetPos = rb.position + transform.TransformDirection(move) * moveSpeed * Time.deltaTime;
+            Vector3 targetPos = rb.position + transform.TransformDirection(move) * currentSpeed * Time.deltaTime;
             rb.MovePosition(targetPos);
         }
 
