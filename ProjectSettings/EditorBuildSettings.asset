@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Bosque.unity
+    path: Assets/SCENES/Bosque.unity
     guid: 9aa3c76297772ed40b1fa74aea089a38
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 97fe4c6ff0db0394393b27daa755b598, type: 3}
