@@ -56,6 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Rumi y Qori.sln",
+    "dotnet.defaultSolution": "Gamejam_Salamandra_Labs.sln",
     "dotnet.preferCSharpExtension": true
 }
