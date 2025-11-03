@@ -8,7 +8,7 @@ public class Menu_behavior : MonoBehaviour
 //START
 public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Nivel_1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
 //ABOUT
 public void AboutGame()
