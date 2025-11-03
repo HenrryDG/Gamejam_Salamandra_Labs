@@ -20,14 +20,12 @@ public class About : MonoBehaviour
 
 	void Awake()
 	{
-		// Validaciones mínimas
 		if (images == null || images.Length == 0)
 		{
 			Debug.LogWarning("About: no se han asignado Images en el inspector.");
 			return;
 		}
 
-		// Asegurar que solo la primera imagen esté activa al inicio
 		for (int i = 0; i < images.Length; i++)
 		{
 			if (images[i] != null)
@@ -36,11 +34,9 @@ public class About : MonoBehaviour
 
 		currentIndex = 0;
 
-		// Inicialmente el botón anterior está oculto (según requisitos)
 		if (previousButton != null)
 			previousButton.gameObject.SetActive(false);
 
-		// nextButton se deja tal cual; opcionalmente se puede desactivar al llegar al final
 	}
 
 	// Llamar desde el botón "Siguiente" (OnClick) o desde código
@@ -50,7 +46,7 @@ public class About : MonoBehaviour
 			return;
 
 		if (currentIndex >= images.Length - 1)
-			return; // ya estamos en la última
+			return;
 
 		// ocultar actual
 		if (images[currentIndex] != null)
@@ -62,13 +58,11 @@ public class About : MonoBehaviour
 		if (images[currentIndex] != null)
 			images[currentIndex].gameObject.SetActive(true);
 
-		// Si llegamos a la tercera (última) activamos el botón "Anterior"
 		if (currentIndex == images.Length - 1)
 		{
 			if (previousButton != null)
 				previousButton.gameObject.SetActive(true);
 
-			// opcional: desactivar nextButton si no quieres pasar más
 			if (nextButton != null)
 				nextButton.interactable = false;
 		}
@@ -81,7 +75,7 @@ public class About : MonoBehaviour
 			return;
 
 		if (currentIndex <= 0)
-			return; // ya estamos en la primera
+			return;
 
 		// ocultar actual
 		if (images[currentIndex] != null)
@@ -93,21 +87,23 @@ public class About : MonoBehaviour
 		if (images[currentIndex] != null)
 			images[currentIndex].gameObject.SetActive(true);
 
-		// Si volvemos a la primera, ocultamos el botón anterior
 		if (currentIndex == 0)
 		{
 			if (previousButton != null)
 				previousButton.gameObject.SetActive(false);
 
-			// reactivar nextButton si estaba desactivado
 			if (nextButton != null)
 				nextButton.interactable = true;
 		}
 		else
 		{
-			// Si estamos en una posición intermedia, aseguramos que next esté activo
 			if (nextButton != null)
 				nextButton.interactable = true;
 		}
 	}
+//REGRESAR AL MENU
+public void BackToMenu()
+{
+    UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+}
 }
