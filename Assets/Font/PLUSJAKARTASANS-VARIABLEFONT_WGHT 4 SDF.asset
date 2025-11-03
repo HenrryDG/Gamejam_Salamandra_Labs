@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: PLUSJAKARTASANS-VARIABLEFONT_WGHT 4 SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1261215779
   material: {fileID: 2879268309993077064}
-  materialHashCode: 0
+  materialHashCode: 1442095837
   m_Version: 1.1.0
   m_SourceFontFileGUID: 334453ea625dee94882ab637a7ec26d7
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 334453ea625dee94882ab637a7ec26d7, type: 3}
@@ -2744,9 +2744,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.875
+    - _ScaleRatioB: 0.7109375
+    - _ScaleRatioC: 0.7109375
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
