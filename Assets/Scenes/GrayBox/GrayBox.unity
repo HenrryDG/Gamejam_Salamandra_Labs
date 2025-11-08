@@ -2282,6 +2282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 5
   moveSpeed: 5
+  runSpeed: 7
+  walkAnimationSpeed: 0.8
+  runAnimationSpeed: 1.1
   mouse_horizontal: 0.5
   mouse_vertical: 0.5
   maxRotationLookUp: -25
