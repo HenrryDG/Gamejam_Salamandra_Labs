@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Counter : MonoBehaviour
 {
     public TMP_Text timerText;
-    public float timeRemaining = 120f; // 2 minutos = 120 segundos
+    public float timeRemaining = 90f; // 1 minuto y 30 segundos
     private bool isRunning = true;
 
     void Update()
@@ -39,6 +40,11 @@ public class Counter : MonoBehaviour
     {
         
         Debug.Log("Tiempo agotado!");
+        // Si TrapCounter no es igual a 5 reiniciar el nivel, recargar la escena
+        if (TrapCounter.instance.trampasRecogidas < TrapCounter.instance.totalTrampas)
+        {
+            SceneManager.LoadScene("Nivel_1");
+        }
 
     }
 }
