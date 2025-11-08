@@ -1519,7 +1519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b9ac7df392156844ebbaadb122539f75, type: 3}
       propertyPath: m_Name
-      value: wooden+table+3d+model
+      value: mesa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1698,7 +1698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 232424c424b68134aadecd7c02d86fc1, type: 3}
       propertyPath: m_Name
-      value: chimenea+3d+modelo (1)
+      value: chimenea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1772,7 +1772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9b7fe59968e9b974f954b2895057ebd4, type: 3}
       propertyPath: m_Name
-      value: "sof\xE1+verde+3d (1)"
+      value: sofa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1846,7 +1846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aac96966d60e8094c8ca579bedecd523, type: 3}
       propertyPath: m_Name
-      value: ventana+de+madera+3d+modelo
+      value: ventana1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2030,7 +2030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e858ed763cee9334599c8b576569608c, type: 3}
       propertyPath: m_Name
-      value: nightstand+3d+model (1)
+      value: velador2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2042,6 +2042,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e858ed763cee9334599c8b576569608c, type: 3}
   m_PrefabInstance: {fileID: 1164075510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1214394783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+  m_PrefabInstance: {fileID: 1748133486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1214394785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214394783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d894a7d70cf89b44908248a2a366bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1214394786}
+  minWatchInterval: 5
+  maxWatchInterval: 10
+--- !u!95 &1214394786
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214394783}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26710c0988f0e434d9abeea87209ff52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1291149324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2104,7 +2145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f2d7ae69a1638f745ac0b4088a262631, type: 3}
       propertyPath: m_Name
-      value: wooden+chair+3d+model
+      value: silla
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2441,7 +2482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e858ed763cee9334599c8b576569608c, type: 3}
       propertyPath: m_Name
-      value: nightstand+3d+model
+      value: velador1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2830,7 +2871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 96798171796215144b63bec6bb06b738, type: 3}
       propertyPath: m_Name
-      value: librero+3d (1)
+      value: librero
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2842,6 +2883,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96798171796215144b63bec6bb06b738, type: 3}
   m_PrefabInstance: {fileID: 1652854769}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1748133486
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92222
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.92222
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.92222
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.443803
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8034941
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.59531283
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -73.07
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7123557239425319666, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -2819925644604722551, guid: 20198299e7735af4bae24fcbc2d15adb, type: 3}
+    - target: {fileID: 919132149155446097, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      propertyPath: m_Name
+      value: Cazador
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214394785}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214394786}
+  m_SourcePrefab: {fileID: 100100000, guid: b037e0c5a1e0af64898e5ecec522c6ad, type: 3}
 --- !u!1 &1761108482
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,7 +3129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f2d7ae69a1638f745ac0b4088a262631, type: 3}
       propertyPath: m_Name
-      value: wooden+chair+3d+model (1)
+      value: silla
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3353,7 +3473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aac96966d60e8094c8ca579bedecd523, type: 3}
       propertyPath: m_Name
-      value: ventana+de+madera+3d+modelo (1)
+      value: ventana2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aac96966d60e8094c8ca579bedecd523, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3549,7 +3669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4fa99164f433f7d4f89547bb995a7d31, type: 3}
       propertyPath: m_Name
-      value: "l\xE1mpara+3d+modelo (1)"
+      value: lampara
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3825,7 +3945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc2532caf1f4e874e8fbb3c20af02002, type: 3}
       propertyPath: m_Name
-      value: vintage+television+3d+model
+      value: televisor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15411,3 +15531,4 @@ SceneRoots:
   - {fileID: 1891166448}
   - {fileID: 2089086798}
   - {fileID: 1355269266}
+  - {fileID: 1748133486}
