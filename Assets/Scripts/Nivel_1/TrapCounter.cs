@@ -45,7 +45,7 @@ public class TrapCounter : MonoBehaviour
     private void CargarSiguienteNivel()
     {
         Debug.Log("¡Todas las trampas recogidas! Cargando Nivel_2...");
-        SceneManager.LoadScene("Nivel_2");
+        SceneManager.LoadScene("Nivel2");
     }
     private IEnumerator EsperarYCargarSiguienteNivel()
     {

@@ -7,7 +7,6 @@ public class ObjectInteraction : MonoBehaviour
 {
     public float velocidadRotacion = 100f;
     public AudioClip sonidoRecoger;
-    public TMP_Text textoEstadoObjeto;
 
     private AudioSource audioSource;
 
@@ -15,12 +14,6 @@ public class ObjectInteraction : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
-
-        if (textoEstadoObjeto != null)
-        {
-            textoEstadoObjeto.text = "Encuentra un objeto para noquear al cazador";
-            textoEstadoObjeto.color = Color.white;
-        }
     }
 
     void Update()
@@ -37,11 +30,8 @@ public class ObjectInteraction : MonoBehaviour
             if (sonidoRecoger != null)
                 audioSource.PlayOneShot(sonidoRecoger);
 
-            if (textoEstadoObjeto != null)
-            {
-                textoEstadoObjeto.text = "Objeto encontrado";
-                textoEstadoObjeto.color = Color.green;
-            }
+            //  Avisar al EndManager que se recogió el objeto
+            EndManager.instance.OnObjectCollected();
 
             Destroy(gameObject, 0.2f);
         }

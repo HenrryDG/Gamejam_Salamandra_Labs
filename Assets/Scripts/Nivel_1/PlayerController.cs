@@ -5,22 +5,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-     #region VARIABLES
+    #region VARIABLES
 
     // PONER HEADERS
     [Header("Movimiento")]
     [SerializeField] private float jumpForce = 0f;
     [SerializeField] private float moveSpeed = 2.5f;
-    [SerializeField] private float runSpeed = 7f; 
+    [SerializeField] private float runSpeed = 7f;
 
     [Header("Velocidad de Animación")]
     [SerializeField] private float walkAnimationSpeed = 0.8f;
     [SerializeField] private float runAnimationSpeed = 1.1f;
 
+    private bool isGrounded = true;
+
     Rigidbody rb;
     PlayerInput actionsMaps;
 
-    private bool isRunning = false; 
+    private bool isRunning = false;
     float hMouse, vMouse;
 
     //Animator controller
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("PlayerController: Animator component not found. Animation triggers will be skipped.", this);
         }
-        
+
     }
 
     // Update is called once per frame
@@ -74,21 +76,22 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            if (rb != null)
+            if (rb != null && isGrounded)
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+                if (animator != null)
+                {
+                    animator.SetTrigger("Jump");
+                }
             }
             else
             {
-                Debug.LogWarning("PlayerController.Jump: Rigidbody is null — cannot apply jump force.", this);
-            }
-
-            if (animator != null)
-            {
-                animator.SetTrigger("Jump");
+                Debug.LogWarning("PlayerController.Jump: No se puede saltar — no está en el suelo o falta Rigidbody.", this);
             }
         }
     }
+
 
     // Método para correr
     public void Run(InputAction.CallbackContext context)
@@ -171,4 +174,22 @@ public class PlayerController : MonoBehaviour
         Camera.main.transform.localEulerAngles = new Vector3(-vMouse, 0, 0.0f);
         transform.Rotate(0, hMouse, 0);
     }
+
+    // Metodo para verificar si puede saltar
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
 }
