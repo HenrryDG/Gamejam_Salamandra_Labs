@@ -43,7 +43,7 @@ public class Counter : MonoBehaviour
         // Si TrapCounter no es igual a 5 reiniciar el nivel, recargar la escena
         if (TrapCounter.instance.trampasRecogidas < TrapCounter.instance.totalTrampas)
         {
-            SceneManager.LoadScene("Nivel_1");
+            SceneManager.LoadScene("GameOver_1");
         }
 
     }
